@@ -1,6 +1,7 @@
 FROM alpine:latest
 
-ENV TERRAFORM_VERSION=0.10.0
+ARG TERRAFORM_VERSION
+ENV TERRAFORM_VERSION=${TERRAFORM_VERSION:-0.10.0}
 
 RUN apk add --update git curl bash openssh && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
